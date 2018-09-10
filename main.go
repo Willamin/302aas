@@ -39,7 +39,7 @@ func AWSHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRe
 
   if len(splitPath) < 3 {
     return events.APIGatewayProxyResponse{
-    Body:       "Not found",
+    Body:       "Not found\n",
     StatusCode: 404,
   }, nil
   }
