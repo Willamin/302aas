@@ -51,7 +51,7 @@ func AWSHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRe
 		Body:       "",
 		StatusCode: 302,
 		Headers: map[string]string{
-			"Location": fmt.Sprintf("https://%s.ngrok.id", id),
+			"Location": fmt.Sprintf("https://%s.ngrok.io", id),
 		},
 	}, nil
 }
