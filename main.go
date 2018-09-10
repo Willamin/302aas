@@ -56,7 +56,7 @@ func AWSHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRe
 	}, nil
 }
 
-func NotFound() {
+func NotFound() (events.APIGatewayProxyResponse, error){
   return events.APIGatewayProxyResponse{
     Body:       "Not found\n",
     StatusCode: 404,
