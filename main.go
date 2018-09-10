@@ -33,7 +33,7 @@ func AWSHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRe
 
 	splitPath := strings.Split(request.Path, "/")
 
-  if len(splitPath) < 1 {
+  if len(splitPath) < 2 {
     return NotFound()
   }
 
