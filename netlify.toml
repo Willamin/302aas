@@ -3,3 +3,8 @@
   functions = "functions"
 [build.environment]
   GO_IMPORT_PATH = "github.com/willamin/302aas"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/302aas/:splat"
+  status = 200
