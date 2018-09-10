@@ -8,6 +8,7 @@ import (
   "github.com/gin-gonic/gin"
   "net/http"
   "fmt"
+  "strings"
 )
 
 const (
@@ -28,15 +29,28 @@ func main() {
 }
 
 func AWSHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-  id := "a"
-
   log.Printf("%v", request.Path)
+
+  splitPath := strings.Split(request.Path, "/")
+
+  if (splitPath[0] == ".netlify") {
+    splitPath = splitPath[2:]
+  }
+
+  if len(splitPath) < 3 {
+    return events.APIGatewayProxyResponse{
+    Body:       "Not found",
+    StatusCode: 404,
+  }, nil
+  }
+
+  id := splitPath[2]
 
   return events.APIGatewayProxyResponse{
     Body:       "",
     StatusCode: 302,
     Headers: map[string]string{
-      "Location": fmt.Sprintf("https://%s.ngrok.io", id),
+      "Location": fmt.Sprintf("/", id),
     },
   }, nil
 }
