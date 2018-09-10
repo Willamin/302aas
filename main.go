@@ -30,7 +30,7 @@ func main() {
 func AWSHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
   id := "a"
 
-  log.Printf("%v", request)
+  log.Printf("%v", request.Path())
 
   return events.APIGatewayProxyResponse{
     Body:       "",
