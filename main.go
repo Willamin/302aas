@@ -66,8 +66,8 @@ func NotFound() (events.APIGatewayProxyResponse, error){
 func MockHandler() {
 	r := gin.Default()
 
-	r.GET("/:id", func(c *gin.Context) {
-		path := fmt.Sprintf("https://%s.ngrok.io", c.Param("id"))
+	r.GET("/:id/*splat", func(c *gin.Context) {
+		path := fmt.Sprintf("https://%s.ngrok.io%s", c.Param("id"), c.Param("splat"))
 		c.Redirect(http.StatusFound, path)
 	})
 
